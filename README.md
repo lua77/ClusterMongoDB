@@ -46,4 +46,18 @@ docker exec -it mongo1 mongosh --eval "rs.status()"
 ##No campo 'new connection' insira a conexão que foi salva anteriormente
 mongodb://127.0.0.1:27020/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.4.2
 
+## Clique em >_ para abrir o terminal.
+
+```
+
+# 🔄 Inserindo dados:
+
+```bash
+## No terminal do nó primario.
+##Este comando especifica qual base será utilizada.
+use Sistema
+
+## Insere vários usuarios ao mesmo tempo.
+'db.cliente.insertMany([{"first_name":"Adrianne","last_name":"Fulton","email":"afulton0@un.org"},
+{"first_name":"Birgit","last_name":"Tuke","email":"btuke1@surveymonkey.com"}])'
 ```
