@@ -58,8 +58,8 @@ mongodb://127.0.0.1:27020/?directConnection=true&serverSelectionTimeoutMS=2000&a
 use Sistema
 
 ## Insere vários usuarios ao mesmo tempo.
-'db.cliente.insertMany([{"first_name":"Adrianne","last_name":"Fulton","email":"afulton0@un.org"},
-{"first_name":"Birgit","last_name":"Tuke","email":"btuke1@surveymonkey.com"}])'
+db.cliente.insertMany([{"first_name":"Adrianne","last_name":"Fulton","email":"afulton0@un.org"},
+{"first_name":"Birgit","last_name":"Tuke","email":"btuke1@surveymonkey.com"}])
 
 ##Utilizamos o https://www.mockaroo.com/ para gerar os dados utilizados.
 
@@ -85,4 +85,22 @@ db.cliente.insertOne({"first_name":"Cleiton","last_name":"Rasta","email":"cabeca
 
 ## Abre o terminal de um nó secundario e valide a replicação dos dados
 db.cliente.findOne({last_name:"Rasta"})
+```
+
+# 🌍 Trabalhando com queda do nó primario
+
+```bash
+## Volte no docker para derubar o nó primario(vamos considerar mongo4).
+docker stop mongo4
+
+##Valide qual nó assumiu a posição de primario.
+docker exec -it mongo1 mongosh --eval "rs.status()"
+
+## Voltamos ao Mongo Compass e acessamos a conexão que foi exibida como 'PRIMARY'
+
+##Realizamos uma inserção de teste
+db.cliente.insertOne({"first_name":"Alessandro","last_name":"Jose","email":"alessandro.jose@gmail.com"})
+
+## Abre o terminal de um nó secundario e valide a replicação dos dados
+db.cliente.findOne({last_name:"Jose"})
 ```
