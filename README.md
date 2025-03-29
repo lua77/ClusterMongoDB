@@ -60,4 +60,29 @@ use Sistema
 ## Insere vários usuarios ao mesmo tempo.
 'db.cliente.insertMany([{"first_name":"Adrianne","last_name":"Fulton","email":"afulton0@un.org"},
 {"first_name":"Birgit","last_name":"Tuke","email":"btuke1@surveymonkey.com"}])'
+
+##Utilizamos o https://www.mockaroo.com/ para gerar os dados utilizados.
+
+##Consultar se os dados foram inseridos.
+db.cliente.find()
+
+##Consulta através de um filtro.
+db.cliente.findOne()
+
+##Os comandos devem retornar os dados existentes e/ou o dado filtrado.
+
+```
+
+
+# 🌍 Trabalhando com queda de um nó secundario
+
+```bash
+## Volte no docker para derubar um dos nós.
+docker stop 'nome do container'
+
+## Volte ao Mongo Compass
+db.cliente.insertOne({"first_name":"Cleiton","last_name":"Rasta","email":"cabecadegelo@gmail.com"})
+
+## Abre o terminal de um nó secundario e valide a replicação dos dados
+db.cliente.findOne({last_name:"Rasta"})
 ```
