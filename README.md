@@ -104,3 +104,25 @@ db.cliente.insertOne({"first_name":"Alessandro","last_name":"Jose","email":"ales
 ## Abre o terminal de um nó secundario e valide a replicação dos dados
 db.cliente.findOne({last_name:"Jose"})
 ```
+
+# 🐍 Logs de alteração em python
+
+```bash
+##Abrimos um prompt de comando/terminal
+
+##Instala a biblioteca necessaria para o funcionamento
+pip install pymongo
+
+##Executa o arquivo(caminho exemplo)
+python C:\Users\Exemplo\Documents\FunctionMongo.py
+
+##Com isso quando uma alteração for realizada no Mongo Compass
+##ela será exibida no prompt de comando.
+[2025-03-29 14:59:15] Operação: n | Banco:  | Dados: {'msg': 'periodic noop'}
+[2025-03-29 14:59:17] Operação: i | Banco: Sistema.cliente | Dados: {'_id': ObjectId('67e834f5e29d44b98cf059c3'), 'first_name': 'Alessandro', 'last_name': 'Jose', 'email': 'alessandro.jose@gmail.com'}
+[2025-03-29 14:59:35] Operação: n | Banco:  | Dados: {'msg': 'periodic noop'}
+
+##Mostramos detalhes como operação (i para insert, u para update, d para delete), banco/coleção, dados alterados, e timestamp.
+Operação: i | Banco: Sistema.cliente | Dados: {'_id': ObjectId('67e834a2e29d44b98cf059c2'), 'first_name': 'Alessandro', 'last_name': 'Jose', 'email': 'alessandro.jose@gmail.com'}
+
+```
